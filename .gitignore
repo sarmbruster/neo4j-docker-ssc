@@ -1,2 +1,4 @@
 certificate.*
 private.key
+ext.*
+trustStore.jks

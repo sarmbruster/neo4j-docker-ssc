@@ -5,7 +5,7 @@ import ssl
 address = ('', 8080)
 
 # Generate a self-signed certificate
-certfile = 'certificate.crt'
+certfile = 'ext.crt'
 keyfile = 'private.key'
 
 # Create an HTTP request handler

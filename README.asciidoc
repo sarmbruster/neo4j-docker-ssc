@@ -1,0 +1,25 @@
+# Neo4j dockerized with self signed certificates
+
+Use link:neo4j.sh[] to generate certificates and start a neo4j docker container. We do use 2 certificates: 
+one certificate is used for the https connector and secure bolt. 
+The other certifacte is added to the JVM trustStore and thus allows Cypher to access external resources (e.g. CSV import, REST API calls) using that certificate.
+
+
+## usage
+* call `./neo4j.sh`
+* in another shell, launch `python ./externalService.py` to simulate an server being access from e.g. Cypher
+* for testing accessing an external resource use e.g.
+[source,cypher]
+----
+load csv with headers from 'https://host.docker.internal:8080/dummy.csv' as row return row
+----
+
+## notes
+* for bolt encryption is enforced. 
+* use `cypher-shell -a "neo4j+ssc://localhost:7687" ` to connect via cmd line
+* use https://localhost:7473[] and accept the certificate error in your browser. You can remove that warning if you add the certificate to the browser's trusted list.
+* certificates are created by https://www.openssl.org/[openssl]
+* the certifcate for accessing external resources is added to JVM keystore using its https://docs.oracle.com/en/java/javase/17/docs/specs/man/keytool.html[keytool]
+* neo4j by default uses different folders for different connectors. For simplicity we do use one single directory to hold the certifcates
+* The certificates, private keys and the JVM truststore file are mounted using a volume mount to the docker container. This way no modification of the container itself is necessary
+* `--add-host=host.docker.internal:host-gateway` is necessary for Linux
