@@ -16,7 +16,7 @@ load csv with headers from 'https://host.docker.internal:8080/dummy.csv' as row 
 
 ## notes
 * for bolt encryption is enforced. 
-* use `cypher-shell -a "neo4j+ssc://localhost:7687" ` to connect via cmd line
+* use `cypher-shell -a "neo4j+ssc://localhost:7687"` to connect via cmd line
 * use https://localhost:7473[] and accept the certificate error in your browser. You can remove that warning if you add the certificate to the browser's trusted list.
 * certificates are created by https://www.openssl.org/[openssl]
 * the certifcate for accessing external resources is added to JVM keystore using its https://docs.oracle.com/en/java/javase/17/docs/specs/man/keytool.html[keytool]
