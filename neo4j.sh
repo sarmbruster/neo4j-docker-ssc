@@ -43,6 +43,7 @@ docker run --rm \
 -e NEO4J_dbms_ssl_policy_bolt_enabled="true" \
 -e NEO4J_dbms_ssl_policy_bolt_base__directory="certificates" \
 -e NEO4JLABS_PLUGINS='["apoc"]' \
+-e apoc.trigger.enabled=true \
 -e NEO4J_dbms_jvm_additional="-Djavax.net.ssl.trustStore=/var/lib/neo4j/trustStore.jks -Djavax.net.ssl.trustStorePassword=changeme " \
 -p 7474:7474 \
 -p 7473:7473 \
