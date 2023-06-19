@@ -7,7 +7,7 @@ The other certifacte is added to the JVM trustStore and thus allows Cypher to ac
 
 ## usage
 * call `./neo4j.sh`
-* in another shell, launch `python ./externalService.py` to simulate an server being access from e.g. Cypher
+* in another shell, launch `./externalService.py` to simulate an server being access from e.g. Cypher
 * for testing accessing an external resource use e.g.
 [source,cypher]
 ----
